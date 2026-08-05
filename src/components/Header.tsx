@@ -20,7 +20,7 @@ export function Header() {
         scrolled ? "bg-background/95 border-b border-border backdrop-blur" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6 lg:py-4">
+      <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6 lg:flex lg:justify-between lg:py-4">
         <a href="#top" className="flex min-w-0 items-center gap-3">
           <img
             src={logo}
