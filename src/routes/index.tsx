@@ -1,24 +1,87 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Header } from "@/components/Header";
+import { Hero } from "@/components/Hero";
+import { Categories } from "@/components/Categories";
+import { Advantages } from "@/components/Advantages";
+import { Process } from "@/components/Process";
+import { Materials } from "@/components/Materials";
+import { Projects } from "@/components/Projects";
+import { About } from "@/components/About";
+import { CalcForm } from "@/components/CalcForm";
+import { Contacts } from "@/components/Contacts";
+import { FinalCta } from "@/components/FinalCta";
+import { Footer } from "@/components/Footer";
+import { MobileBar } from "@/components/MobileBar";
+import { site } from "@/lib/site";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "Корпусная мебель на заказ в Жезқазғане — Jihaz-Line";
+const description =
+  "Jihaz-Line — изготовление корпусной мебели для дома на заказ в Жезқазғане и области Ұлытау. Кухни, шкафы, гардеробные, прихожие и системы хранения.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { property: "og:locale", content: "ru_RU" },
+      { property: "og:url", content: "/" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: site.name,
+          description:
+            "Собственное производство корпусной мебели для дома и офиса на заказ.",
+          telephone: "+77765239977",
+          email: site.email,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Жезқазған",
+            addressRegion: "Ұлытау облысы",
+            addressCountry: "KZ",
+          },
+          areaServed: ["Жезқазған", "Ұлытау облысы"],
+          sameAs: [
+            site.instagram,
+            site.facebook,
+            site.youtube,
+            site.tiktok,
+            site.telegram,
+            site.catalog,
+          ],
+        }),
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <Categories />
+        <Advantages />
+        <Process />
+        <Materials />
+        <Projects />
+        <About />
+        <CalcForm />
+        <Contacts />
+        <FinalCta />
+      </main>
+      <Footer />
+      <MobileBar />
+    </>
   );
 }
