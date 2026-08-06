@@ -4,7 +4,6 @@ import { Hero } from "@/components/Hero";
 import { Categories } from "@/components/Categories";
 import { Advantages } from "@/components/Advantages";
 import { Process } from "@/components/Process";
-import { Materials } from "@/components/Materials";
 import { Projects } from "@/components/Projects";
 import { About } from "@/components/About";
 import { CalcForm } from "@/components/CalcForm";
@@ -55,7 +54,6 @@ export const Route = createFileRoute("/")({
             site.youtube,
             site.tiktok,
             site.telegram,
-            site.catalog,
           ],
         }),
       },
@@ -73,7 +71,6 @@ function Index() {
         <Categories />
         <Advantages />
         <Process />
-        <Materials />
         <Projects />
         <About />
         <CalcForm />

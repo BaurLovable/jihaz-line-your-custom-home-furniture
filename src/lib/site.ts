@@ -18,7 +18,6 @@ export const site = {
   address: "Ұлытау облысы, Жезқазған қаласы",
   delivery:
     "Принимаем заказы и осуществляем доставку по городу Жезқазған и населённым пунктам области Ұлытау",
-  catalog: "https://jihaz-line.netlify.app",
 } as const;
 
 /** Формирует ссылку WhatsApp с предзаполненным текстом сообщения. */
@@ -29,7 +28,6 @@ export function waLink(message: string): string {
 export const navItems = [
   { href: "#categories", label: "Виды мебели" },
   { href: "#process", label: "Как мы работаем" },
-  { href: "#materials", label: "Материалы" },
   { href: "#about", label: "О производстве" },
   { href: "#contacts", label: "Контакты" },
 ] as const;

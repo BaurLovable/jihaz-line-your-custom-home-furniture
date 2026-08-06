@@ -89,11 +89,6 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href={site.catalog} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
-                Действующий каталог
-              </a>
-            </li>
-            <li>
               <Link to="/privacy" className="hover:text-accent">
                 Политика конфиденциальности
               </Link>
