@@ -1,6 +1,7 @@
-import { Mail, MapPin, MessageCircle, Phone, Send, Truck, Instagram, Facebook, Youtube } from "lucide-react";
+import { Mail, MapPin, Phone, Send, Truck, Instagram, Facebook, Youtube } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { site, waLink } from "@/lib/site";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 
 function TiktokIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -51,7 +52,7 @@ export function Contacts() {
                   rel="noopener noreferrer"
                   className="mt-4 inline-flex items-center justify-center gap-2 rounded-sm bg-[#25D366] hover:bg-[#20ba59] px-4 py-3 text-sm font-bold text-white transition-colors w-full"
                 >
-                  <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                  <WhatsAppIcon className="h-4 w-4 shrink-0" />
                   Написать в WhatsApp
                 </a>
               </li>

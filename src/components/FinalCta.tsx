@@ -1,5 +1,6 @@
 import { Reveal } from "./Reveal";
 import { site, waLink } from "@/lib/site";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 
 export function FinalCta() {
   return (
@@ -20,9 +21,10 @@ export function FinalCta() {
               )}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-sm bg-primary px-7 py-4 text-base font-bold text-primary-foreground transition-colors hover:bg-secondary"
+              className="inline-flex items-center justify-center gap-2.5 rounded-sm bg-[#25D366] px-7 py-4 text-base font-bold text-white shadow-sm transition-colors hover:bg-[#20ba59]"
             >
-              Написать в WhatsApp
+              <WhatsAppIcon className="h-5 w-5 shrink-0" />
+              <span>Написать в WhatsApp</span>
             </a>
             <a
               href={site.phoneHref}

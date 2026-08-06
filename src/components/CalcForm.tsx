@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { Reveal } from "./Reveal";
 import { site, waLink } from "@/lib/site";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 
 type Fields = {
   name: string;
@@ -217,9 +218,10 @@ export function CalcForm() {
               <button
                 type="submit"
                 disabled={pending}
-                className="w-full rounded-sm bg-primary px-6 py-4 text-base font-bold text-primary-foreground transition-colors hover:bg-secondary active:bg-secondary disabled:opacity-70"
+                className="inline-flex items-center justify-center gap-2.5 w-full rounded-sm bg-[#25D366] px-6 py-4 text-base font-bold text-white shadow-sm transition-colors hover:bg-[#20ba59] active:bg-[#1da850] disabled:opacity-70"
               >
-                {pending ? "Открываем WhatsApp…" : "Отправить запрос в WhatsApp"}
+                <WhatsAppIcon className="h-5 w-5 shrink-0" />
+                <span>{pending ? "Открываем WhatsApp…" : "Отправить запрос в WhatsApp"}</span>
               </button>
               <p className="mt-3 text-xs text-muted-foreground">
                 Нажимая кнопку, вы откроете чат WhatsApp с номером {site.phoneDisplay} и готовым
