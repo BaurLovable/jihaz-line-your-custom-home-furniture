@@ -11,6 +11,7 @@ import { Contacts } from "@/components/Contacts";
 import { FinalCta } from "@/components/FinalCta";
 import { Footer } from "@/components/Footer";
 import { MobileBar } from "@/components/MobileBar";
+import { ChatWidget } from "@/components/ChatWidget";
 import { site } from "@/lib/site";
 
 const title = "Корпусная мебель на заказ в Жезқазғане — Jihaz-Line";
@@ -37,8 +38,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: site.name,
-          description:
-            "Собственное производство корпусной мебели для дома и офиса на заказ.",
+          description: "Собственное производство корпусной мебели для дома и офиса на заказ.",
           telephone: "+77765239977",
           email: site.email,
           address: {
@@ -48,13 +48,7 @@ export const Route = createFileRoute("/")({
             addressCountry: "KZ",
           },
           areaServed: ["Жезқазған", "Ұлытау облысы"],
-          sameAs: [
-            site.instagram,
-            site.facebook,
-            site.youtube,
-            site.tiktok,
-            site.telegram,
-          ],
+          sameAs: [site.instagram, site.facebook, site.youtube, site.tiktok, site.telegram],
         }),
       },
     ],
@@ -79,6 +73,7 @@ function Index() {
       </main>
       <Footer />
       <MobileBar />
+      <ChatWidget />
     </>
   );
 }

@@ -32,9 +32,7 @@ function PrivacyPage() {
       </h1>
 
       <div className="mt-8 space-y-6 text-base leading-relaxed text-muted-foreground">
-        <p>
-          Страница является заготовкой. Данные владельца сайта и реквизиты требуют заполнения.
-        </p>
+        <p>Страница является заготовкой. Данные владельца сайта и реквизиты требуют заполнения.</p>
 
         <section>
           <h2 className="text-xl font-bold text-primary">Какие данные передаются</h2>
@@ -48,8 +46,8 @@ function PrivacyPage() {
         <section>
           <h2 className="text-xl font-bold text-primary">Как используются данные</h2>
           <p className="mt-3">
-            Полученные в переписке контакты используются только для ответа на обращение и
-            обсуждения заказа мебели.
+            Полученные в переписке контакты используются только для ответа на обращение и обсуждения
+            заказа мебели.
           </p>
         </section>
 

@@ -47,12 +47,22 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+              <a
+                href={site.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent"
+              >
                 WhatsApp
               </a>
             </li>
             <li>
-              <a href={site.telegram} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+              <a
+                href={site.telegram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent"
+              >
                 Telegram {site.telegramHandle}
               </a>
             </li>
@@ -69,22 +79,42 @@ export function Footer() {
           <h2 className="text-sm font-bold text-accent">Ещё</h2>
           <ul className="mt-4 space-y-2 text-sm text-primary-foreground/80">
             <li>
-              <a href={site.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+              <a
+                href={site.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent"
+              >
                 Instagram {site.instagramHandle}
               </a>
             </li>
             <li>
-              <a href={site.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+              <a
+                href={site.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent"
+              >
                 Facebook
               </a>
             </li>
             <li>
-              <a href={site.youtube} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+              <a
+                href={site.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent"
+              >
                 YouTube
               </a>
             </li>
             <li>
-              <a href={site.tiktok} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+              <a
+                href={site.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent"
+              >
                 TikTok
               </a>
             </li>

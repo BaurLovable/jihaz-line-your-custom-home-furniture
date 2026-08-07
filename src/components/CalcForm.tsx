@@ -180,7 +180,8 @@ export function CalcForm() {
 
             <div className="sm:col-span-2">
               <label htmlFor="budget" className="text-sm font-semibold text-primary">
-                Желаемый бюджет, ₸ <span className="font-normal text-muted-foreground">— необязательно</span>
+                Желаемый бюджет, ₸{" "}
+                <span className="font-normal text-muted-foreground">— необязательно</span>
               </label>
               <input
                 id="budget"

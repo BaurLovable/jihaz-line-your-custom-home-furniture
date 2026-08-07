@@ -6,7 +6,10 @@ const steps = [
   { title: "Замер и проект", text: "Детали замера и проектирования согласовываются с клиентом." },
   { title: "Подбор материалов", text: "Выбираются цвет, фактура, наполнение и фурнитура." },
   { title: "Изготовление", text: "Мебель производится в цехе Jihaz-Line." },
-  { title: "Доставка и установка", text: "Условия доставки и монтажа согласовываются индивидуально." },
+  {
+    title: "Доставка и установка",
+    text: "Условия доставки и монтажа согласовываются индивидуально.",
+  },
 ];
 
 export function Process() {
@@ -15,7 +18,10 @@ export function Process() {
       id="process"
       className="relative overflow-hidden border-y border-border bg-primary py-16 text-primary-foreground lg:py-24"
     >
-      <div className="blueprint-grid pointer-events-none absolute inset-0 opacity-25" aria-hidden="true" />
+      <div
+        className="blueprint-grid pointer-events-none absolute inset-0 opacity-25"
+        aria-hidden="true"
+      />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal>
           <p className="text-xs font-bold tracking-widest text-accent uppercase">Порядок работы</p>
@@ -29,10 +35,7 @@ export function Process() {
             <Reveal as="li" key={step.title} delay={(i % 3) * 70}>
               <div className="relative border-t border-accent/60 pt-5">
                 {/* Отметка размерной линии */}
-                <span
-                  aria-hidden="true"
-                  className="absolute -top-1.5 left-0 h-3 w-px bg-accent"
-                />
+                <span aria-hidden="true" className="absolute -top-1.5 left-0 h-3 w-px bg-accent" />
                 <span
                   aria-hidden="true"
                   className="absolute -top-1.5 right-0 h-3 w-px bg-accent/50"

@@ -30,7 +30,10 @@ function BlueprintOverlay() {
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-background pt-24 lg:pt-28">
-      <div className="blueprint-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden="true" />
+      <div
+        className="blueprint-grid pointer-events-none absolute inset-0 opacity-40"
+        aria-hidden="true"
+      />
       <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pt-8 pb-14 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:pb-24">
         <div className="min-w-0">
           <p className="inline-flex items-center gap-2 border-l-2 border-accent pl-3 text-xs font-bold tracking-wide text-secondary uppercase sm:text-sm">
