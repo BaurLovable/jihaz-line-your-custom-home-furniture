@@ -7,9 +7,9 @@ export interface ChatMessageInput {
 }
 
 export function buildChatContext(history: ChatMessageInput[], latestMessage: string) {
-  // Limit history to last 10 messages and sanitize
+  // Limit history to last 6 messages and sanitize
   const cleanHistory = (history || [])
-    .slice(-10)
+    .slice(-6)
     .filter(
       (msg) =>
         (msg.role === "user" || msg.role === "assistant") &&
@@ -32,7 +32,7 @@ export async function getGroqChatResponse(
   message: string,
   history: ChatMessageInput[] = [],
 ): Promise<{ success: boolean; text?: string; error?: string }> {
-  const apiKey = process.env.GROQ_API_KEY;
+  const apiKey = process.env["GROQ_API_KEY"];
 
   if (!apiKey || apiKey.trim() === "") {
     console.error("[Groq Server Error] GROQ_API_KEY environment variable is not configured.");
@@ -42,7 +42,7 @@ export async function getGroqChatResponse(
     };
   }
 
-  const model = process.env.GROQ_MODEL ?? "openai/gpt-oss-20b";
+  const model = process.env["GROQ_MODEL"] ?? "openai/gpt-oss-20b";
 
   try {
     const groq = new Groq({ apiKey });
