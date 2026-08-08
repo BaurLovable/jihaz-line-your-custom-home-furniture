@@ -6,8 +6,15 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-primary pb-24 text-primary-foreground lg:pb-0">
+    <footer
+      className="border-t border-[rgba(0,104,119,0.2)] pb-24 lg:pb-0"
+      style={{ backgroundColor: "#17343a", color: "#d7f6fe" }}
+    >
+      {/* Золотая линия сверху */}
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-[#F2C94C] to-transparent opacity-40" />
+
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-4">
+        {/* Brand */}
         <div>
           <div className="flex items-center gap-3">
             <img
@@ -16,21 +23,31 @@ export function Footer() {
               width={40}
               height={40}
               loading="lazy"
-              className="h-10 w-10 rounded-sm"
+              className="h-10 w-10"
             />
-            <span className="font-display text-lg font-extrabold">Jihaz-Line</span>
+            <span className="font-display text-xl font-bold text-white">Jihaz-Line</span>
           </div>
-          <p className="mt-4 text-sm text-primary-foreground/75">
+          <p className="mt-4 text-sm text-[#d7f6fe]/65 leading-relaxed">
             Собственное производство корпусной мебели для дома и офиса.
+          </p>
+          {/* Mono tagline */}
+          <p className="mt-3 font-mono text-[10px] text-[#F2C94C]/60 uppercase tracking-widest">
+            Жезқазған · Ұлытау
           </p>
         </div>
 
+        {/* Navigation */}
         <nav aria-label="Навигация в подвале">
-          <h2 className="text-sm font-bold text-accent">Разделы</h2>
-          <ul className="mt-4 space-y-2 text-sm">
+          <h2 className="font-mono text-[11px] font-bold text-[#F2C94C] uppercase tracking-[0.12em]">
+            Разделы
+          </h2>
+          <ul className="mt-5 space-y-2.5 text-sm">
             {navItems.map((item) => (
               <li key={item.href}>
-                <a href={item.href} className="text-primary-foreground/80 hover:text-accent">
+                <a
+                  href={item.href}
+                  className="text-[#d7f6fe]/70 hover:text-[#F2C94C] transition-colors duration-200"
+                >
                   {item.label}
                 </a>
               </li>
@@ -38,11 +55,14 @@ export function Footer() {
           </ul>
         </nav>
 
+        {/* Contacts */}
         <div>
-          <h2 className="text-sm font-bold text-accent">Контакты</h2>
-          <ul className="mt-4 space-y-2 text-sm text-primary-foreground/80">
+          <h2 className="font-mono text-[11px] font-bold text-[#F2C94C] uppercase tracking-[0.12em]">
+            Контакты
+          </h2>
+          <ul className="mt-5 space-y-2.5 text-sm text-[#d7f6fe]/70">
             <li>
-              <a href={site.phoneHref} className="hover:text-accent">
+              <a href={site.phoneHref} className="hover:text-[#F2C94C] transition-colors">
                 {site.phoneDisplay}
               </a>
             </li>
@@ -51,7 +71,7 @@ export function Footer() {
                 href={site.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-accent"
+                className="hover:text-[#F2C94C] transition-colors"
               >
                 WhatsApp
               </a>
@@ -61,29 +81,35 @@ export function Footer() {
                 href={site.telegram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-accent"
+                className="hover:text-[#F2C94C] transition-colors"
               >
                 Telegram {site.telegramHandle}
               </a>
             </li>
             <li>
-              <a href={`mailto:${site.email}`} className="break-all hover:text-accent">
+              <a
+                href={`mailto:${site.email}`}
+                className="break-all hover:text-[#F2C94C] transition-colors"
+              >
                 {site.email}
               </a>
             </li>
-            <li>{site.address}</li>
+            <li className="text-[#d7f6fe]/50">{site.address}</li>
           </ul>
         </div>
 
+        {/* Socials */}
         <div>
-          <h2 className="text-sm font-bold text-accent">Ещё</h2>
-          <ul className="mt-4 space-y-2 text-sm text-primary-foreground/80">
+          <h2 className="font-mono text-[11px] font-bold text-[#F2C94C] uppercase tracking-[0.12em]">
+            Ещё
+          </h2>
+          <ul className="mt-5 space-y-2.5 text-sm text-[#d7f6fe]/70">
             <li>
               <a
                 href={site.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-accent"
+                className="hover:text-[#F2C94C] transition-colors"
               >
                 Instagram {site.instagramHandle}
               </a>
@@ -93,7 +119,7 @@ export function Footer() {
                 href={site.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-accent"
+                className="hover:text-[#F2C94C] transition-colors"
               >
                 Facebook
               </a>
@@ -103,7 +129,7 @@ export function Footer() {
                 href={site.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-accent"
+                className="hover:text-[#F2C94C] transition-colors"
               >
                 YouTube
               </a>
@@ -113,13 +139,13 @@ export function Footer() {
                 href={site.tiktok}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-accent"
+                className="hover:text-[#F2C94C] transition-colors"
               >
                 TikTok
               </a>
             </li>
             <li>
-              <Link to="/privacy" className="hover:text-accent">
+              <Link to="/privacy" className="hover:text-[#F2C94C] transition-colors">
                 Политика конфиденциальности
               </Link>
             </li>
@@ -127,10 +153,15 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-primary-foreground/15">
-        <p className="mx-auto max-w-7xl px-4 py-5 text-xs text-primary-foreground/60 sm:px-6">
-          © {year} Jihaz-Line
-        </p>
+      {/* Bottom bar */}
+      <div className="border-t border-white/8">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6">
+          <p className="font-mono text-xs text-[#d7f6fe]/35">
+            © {year} Jihaz-Line · Custom Furniture Production · Zhezkazgan
+          </p>
+          {/* Декоративный gold accent */}
+          <div className="h-px w-16 bg-gradient-to-r from-[#F2C94C]/40 to-transparent" />
+        </div>
       </div>
     </footer>
   );

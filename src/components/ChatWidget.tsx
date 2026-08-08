@@ -78,11 +78,39 @@ export function ChatWidget() {
 
   // Focus input on open
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && !window.matchMedia("(max-width: 639px)").matches) {
       setTimeout(() => {
         inputRef.current?.focus();
       }, 150);
     }
+  }, [isOpen]);
+
+  // On phones the chat behaves like a full-screen app, so the site behind it
+  // must not continue scrolling. Desktop keeps the existing floating-card flow.
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const mobileQuery = window.matchMedia("(max-width: 639px)");
+    const previousOverflow = document.body.style.overflow;
+    let isScrollLocked = false;
+
+    const syncScrollLock = () => {
+      if (mobileQuery.matches && !isScrollLocked) {
+        document.body.style.overflow = "hidden";
+        isScrollLocked = true;
+      } else if (!mobileQuery.matches && isScrollLocked) {
+        document.body.style.overflow = previousOverflow;
+        isScrollLocked = false;
+      }
+    };
+
+    syncScrollLock();
+    mobileQuery.addEventListener("change", syncScrollLock);
+
+    return () => {
+      mobileQuery.removeEventListener("change", syncScrollLock);
+      if (isScrollLocked) document.body.style.overflow = previousOverflow;
+    };
   }, [isOpen]);
 
   // Close on Escape key
@@ -237,9 +265,9 @@ export function ChatWidget() {
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
         aria-label={isOpen ? "Закрыть чат помощник" : "Открыть чат помощник Jihaz-Line"}
-        className={`fixed bottom-20 right-4 lg:bottom-6 lg:right-6 z-40 flex items-center gap-2.5 rounded-full bg-[#0f172a] px-4 py-3 text-white shadow-xl ring-1 ring-white/10 transition-all duration-300 hover:bg-[#1e293b] hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d97706] ${
-          isOpen ? "shadow-2xl ring-2 ring-[#d97706]" : ""
-        }`}
+        className={`fixed bottom-20 right-4 lg:bottom-6 lg:right-6 z-40 items-center gap-2.5 rounded-full bg-[#0f172a] px-4 py-3 text-white shadow-xl ring-1 ring-white/10 transition-all duration-300 hover:bg-[#1e293b] hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d97706] ${
+          isOpen ? "hidden sm:flex" : "flex"
+        } ${isOpen ? "shadow-2xl ring-2 ring-[#d97706]" : ""}`}
       >
         <div className="relative flex items-center justify-center">
           <Bot className="h-6 w-6 text-[#d97706]" />
@@ -258,17 +286,19 @@ export function ChatWidget() {
         <div
           role="dialog"
           aria-label="Помощник Jihaz-Line"
-          className="fixed bottom-36 right-4 lg:bottom-20 lg:right-6 z-40 flex w-[calc(100vw-2rem)] sm:w-[390px] h-[540px] max-h-[80vh] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl transition-all duration-300 animate-in fade-in slide-in-from-bottom-5"
+          className="fixed inset-0 z-[100] flex h-[100dvh] w-screen max-h-none flex-col overflow-hidden border-0 bg-white shadow-2xl transition-all duration-300 animate-in fade-in slide-in-from-bottom-5 sm:inset-auto sm:bottom-36 sm:right-4 sm:z-40 sm:h-[540px] sm:max-h-[80vh] sm:w-[390px] sm:rounded-2xl sm:border sm:border-slate-200 lg:bottom-20 lg:right-6"
         >
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-slate-800/20 bg-[#0f172a] px-4 py-3 text-white">
-            <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 border border-slate-700">
+          <div className="flex items-center justify-between gap-2 border-b border-slate-800/20 bg-[#0f172a] px-4 py-3 text-white">
+            <div className="flex min-w-0 flex-1 items-center gap-3">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-800 border border-slate-700">
                 <Bot className="h-5 w-5 text-[#d97706]" />
               </div>
-              <div>
-                <h3 className="text-sm font-bold text-white tracking-wide">Помощник Jihaz-Line</h3>
-                <p className="text-[11px] text-slate-300 flex items-center gap-1">
+              <div className="min-w-0">
+                <h3 className="truncate text-sm font-bold text-white tracking-wide">
+                  Помощник Jihaz-Line
+                </h3>
+                <p className="flex items-center gap-1 truncate text-[11px] text-slate-300">
                   <Sparkles className="h-3 w-3 text-[#d97706]" />
                   Помогу с вопросами о мебели и заказе
                 </p>
@@ -288,11 +318,12 @@ export function ChatWidget() {
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                title="Закрыть"
-                aria-label="Закрыть окно чата"
-                className="rounded-lg p-1.5 text-slate-300 transition-colors hover:bg-slate-800 hover:text-white"
+                title="Закрыть чат и вернуться на сайт"
+                aria-label="Закрыть чат и вернуться на сайт"
+                className="flex min-h-10 items-center gap-1.5 rounded-lg border border-white/25 px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-slate-800 sm:min-h-0 sm:border-0 sm:p-1.5 sm:text-slate-300 sm:hover:text-white"
               >
                 <X className="h-5 w-5" />
+                <span className="sm:hidden">На сайт</span>
               </button>
             </div>
           </div>
@@ -375,7 +406,10 @@ export function ChatWidget() {
           </div>
 
           {/* Input Form */}
-          <form onSubmit={handleSubmit} className="border-t border-slate-200 bg-white p-3">
+          <form
+            onSubmit={handleSubmit}
+            className="border-t border-slate-200 bg-white p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-3"
+          >
             <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 focus-within:border-[#0f172a] focus-within:ring-1 focus-within:ring-[#0f172a] transition-all">
               <textarea
                 ref={inputRef as React.RefObject<HTMLTextAreaElement>}
